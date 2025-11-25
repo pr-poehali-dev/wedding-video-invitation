@@ -10,12 +10,35 @@ import { useToast } from '@/hooks/use-toast';
 const Index = () => {
   const { toast } = useToast();
   const [scrollY, setScrollY] = useState(0);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [formData, setFormData] = useState({
     name: '',
     guests: '',
     attending: 'yes',
     message: ''
   });
+
+  const weddingDate = new Date('2025-06-15T15:00:00').getTime();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance > 0) {
+        setTimeLeft({
+          days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((distance % (1000 * 60)) / 1000)
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -80,6 +103,28 @@ const Index = () => {
             <p className="text-lg italic text-foreground/80">
               Приглашаем вас разделить с нами этот особенный день
             </p>
+          </div>
+
+          <div className="mt-16 fade-in-up-delay">
+            <p className="text-sm uppercase tracking-wider text-muted-foreground mb-6">До торжества осталось</p>
+            <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto">
+              <Card className="p-4 md:p-6 bg-card/80 backdrop-blur-sm">
+                <div className="text-4xl md:text-5xl font-light text-primary">{timeLeft.days}</div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-2">дней</div>
+              </Card>
+              <Card className="p-4 md:p-6 bg-card/80 backdrop-blur-sm">
+                <div className="text-4xl md:text-5xl font-light text-primary">{timeLeft.hours}</div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-2">часов</div>
+              </Card>
+              <Card className="p-4 md:p-6 bg-card/80 backdrop-blur-sm">
+                <div className="text-4xl md:text-5xl font-light text-primary">{timeLeft.minutes}</div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-2">минут</div>
+              </Card>
+              <Card className="p-4 md:p-6 bg-card/80 backdrop-blur-sm">
+                <div className="text-4xl md:text-5xl font-light text-primary">{timeLeft.seconds}</div>
+                <div className="text-xs md:text-sm text-muted-foreground mt-2">секунд</div>
+              </Card>
+            </div>
           </div>
         </div>
 
