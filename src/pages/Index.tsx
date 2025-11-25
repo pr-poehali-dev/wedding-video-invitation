@@ -26,6 +26,19 @@ const Index = () => {
     audio.volume = 0.3;
     setAudioElement(audio);
     
+    const playAudio = () => {
+      audio.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        document.addEventListener('click', () => {
+          audio.play();
+          setIsPlaying(true);
+        }, { once: true });
+      });
+    };
+    
+    playAudio();
+    
     return () => {
       audio.pause();
       audio.src = '';
