@@ -11,12 +11,37 @@ const Index = () => {
   const { toast } = useToast();
   const [scrollY, setScrollY] = useState(0);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioElement, setAudioElement] = useState<HTMLAudioElement | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     guests: '',
     attending: 'yes',
     message: ''
   });
+
+  useEffect(() => {
+    const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    audio.loop = true;
+    audio.volume = 0.3;
+    setAudioElement(audio);
+    
+    return () => {
+      audio.pause();
+      audio.src = '';
+    };
+  }, []);
+
+  const toggleMusic = () => {
+    if (audioElement) {
+      if (isPlaying) {
+        audioElement.pause();
+      } else {
+        audioElement.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const weddingDate = new Date('2025-06-15T15:00:00').getTime();
 
@@ -74,6 +99,18 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-muted/30">
+      
+      <Button
+        onClick={toggleMusic}
+        className="fixed top-6 right-6 z-50 rounded-full w-14 h-14 p-0 shadow-2xl hover:scale-110 transition-transform"
+        variant={isPlaying ? "default" : "outline"}
+      >
+        {isPlaying ? (
+          <Icon name="Volume2" size={24} className="animate-pulse" />
+        ) : (
+          <Icon name="VolumeX" size={24} />
+        )}
+      </Button>
       
       <section 
         className="relative h-screen flex items-center justify-center overflow-hidden"
