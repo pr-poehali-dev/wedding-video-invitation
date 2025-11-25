@@ -70,9 +70,9 @@ const Index = () => {
           <div className="mb-8">
             <Icon name="Heart" size={60} className="mx-auto text-primary animate-pulse" />
           </div>
-          <h1 className="text-7xl md:text-9xl font-light mb-4 text-primary">
-            Анна & Дмитрий
-          </h1>
+          <h1 className="md:text-9xl font-light mb-4 text-center text-9xl text-[#000000]">Вячеслав
+ & 
+Сабрина</h1>
           <p className="text-2xl md:text-3xl font-light tracking-widest text-muted-foreground">
             15 июня 2025
           </p>
