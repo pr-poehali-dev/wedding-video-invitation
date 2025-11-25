@@ -142,7 +142,7 @@ const Index = () => {
       </Button>
       
       <section 
-        className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black"
+        className="relative h-screen flex items-center justify-center overflow-hidden luxury-gradient"
         style={{
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
@@ -152,7 +152,7 @@ const Index = () => {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
           style={{
             transform: `scale(${1 + scrollY * 0.0005})`,
           }}
@@ -160,25 +160,27 @@ const Index = () => {
           <source src="https://cdn.coverr.co/videos/coverr-romantic-couple-walking-on-the-beach-at-sunset-6164/1080p.mp4" type="video/mp4" />
         </video>
         
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+        <div className="golden-particles" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/90" />
+        <div className="absolute inset-0 gold-shimmer" />
         
-        <div className="relative z-10 text-center px-4 fade-in-up">
-          <div className="mb-8">
-            <Icon name="Sparkles" size={60} className="mx-auto text-gold animate-pulse" />
+        <div className="relative z-10 text-center px-4">
+          <div className="mb-8 animate-text-slide stagger-1">
+            <Icon name="Sparkles" size={60} className="mx-auto text-gold" />
           </div>
-          <h1 className="text-6xl md:text-9xl font-light mb-6 text-gold">
+          <h1 className="text-6xl md:text-9xl font-light mb-6 text-gold animate-text-slide stagger-2" style={{ textShadow: '0 0 30px rgba(255, 215, 0, 0.5)' }}>
             Вячеслав & Сабрина
           </h1>
-          <p className="text-3xl md:text-4xl font-light tracking-widest text-white/90">
+          <p className="text-3xl md:text-4xl font-light tracking-widest text-white/90 animate-text-slide stagger-3">
             15 июня 2025
           </p>
-          <div className="mt-12 fade-in-up-delay">
+          <div className="mt-12 animate-text-slide stagger-4">
             <p className="text-xl md:text-2xl italic text-white/80">
               Приглашаем вас разделить с нами этот особенный день
             </p>
           </div>
 
-          <div className="mt-16 fade-in-up-delay">
+          <div className="mt-16 animate-text-slide stagger-5">
             <p className="text-sm uppercase tracking-wider text-gold mb-8">До торжества осталось</p>
             <div className="grid grid-cols-4 gap-4 md:gap-8 max-w-2xl mx-auto">
               <Card className="p-4 md:p-6 bg-black/60 backdrop-blur-sm border-gold/30">
@@ -211,7 +213,7 @@ const Index = () => {
         className="py-24 px-4 relative bg-white scroll-fade-in"
       >
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-light text-center mb-16 text-gold">
+          <h2 className="text-5xl md:text-6xl font-light text-center mb-16 text-gold" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.3)' }}>
             Наша История
           </h2>
           
@@ -240,7 +242,7 @@ const Index = () => {
         className="py-24 px-4 bg-gradient-to-b from-white via-gray-50 to-white scroll-fade-in"
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-light text-center mb-4 text-gold">
+          <h2 className="text-5xl md:text-6xl font-light text-center mb-4 text-gold" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.3)' }}>
             Программа Дня
           </h2>
           <p className="text-center text-gray-600 mb-16 text-lg">
@@ -272,13 +274,14 @@ const Index = () => {
 
       <section 
         ref={(el) => (sectionRefs.current[2] = el)}
-        className="py-24 px-4 bg-gradient-to-br from-black via-gray-900 to-black scroll-fade-in"
+        className="py-24 px-4 luxury-gradient scroll-fade-in relative overflow-hidden"
       >
-        <div className="max-w-3xl mx-auto">
-          <Card className="p-8 md:p-12 bg-white/5 backdrop-blur-sm border-gold/30">
+        <div className="golden-particles" />
+        <div className="max-w-3xl mx-auto relative z-10">
+          <Card className="p-8 md:p-12 bg-black/60 backdrop-blur-sm border-gold/30 shadow-2xl">
             <div className="text-center mb-8">
               <Icon name="MapPin" size={48} className="mx-auto mb-4 text-gold" />
-              <h2 className="text-4xl md:text-5xl font-light mb-4 text-gold">Место Проведения</h2>
+              <h2 className="text-4xl md:text-5xl font-light mb-4 text-gold" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.4)' }}>Место Проведения</h2>
             </div>
 
             <div className="space-y-6 text-white/90">
@@ -309,10 +312,10 @@ const Index = () => {
         className="py-24 px-4 bg-white scroll-fade-in"
       >
         <div className="max-w-2xl mx-auto">
-          <Card className="p-8 md:p-12 border-2 border-black/10">
+          <Card className="p-8 md:p-12 border-2 border-black/10 shadow-2xl">
             <div className="text-center mb-8">
               <Icon name="Mail" size={48} className="mx-auto mb-4 text-gold" />
-              <h2 className="text-4xl md:text-5xl font-light mb-4 text-gold">
+              <h2 className="text-4xl md:text-5xl font-light mb-4 text-gold" style={{ textShadow: '0 0 20px rgba(255, 215, 0, 0.3)' }}>
                 Подтверждение Присутствия
               </h2>
               <p className="text-gray-600">
