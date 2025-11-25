@@ -147,15 +147,20 @@ const Index = () => {
           transform: `translateY(${scrollY * 0.5}px)`,
         }}
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-20"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
           style={{
-            backgroundImage: `url(${photos[2]})`,
             transform: `scale(${1 + scrollY * 0.0005})`,
           }}
-        />
+        >
+          <source src="https://cdn.coverr.co/videos/coverr-romantic-couple-walking-on-the-beach-at-sunset-6164/1080p.mp4" type="video/mp4" />
+        </video>
         
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
         
         <div className="relative z-10 text-center px-4 fade-in-up">
           <div className="mb-8">
